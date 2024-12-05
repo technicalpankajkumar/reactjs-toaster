@@ -1,8 +1,9 @@
 {
   "name": "reactjs-toaster",
   "version": "1.0.0",
-  "main": "index.ts",
+  "main": "dist/index.ts",
   "type": "module",
+  "types":"dist/index.d.ts",
   "scripts": {
     "build": "npx rollup -c"
   },

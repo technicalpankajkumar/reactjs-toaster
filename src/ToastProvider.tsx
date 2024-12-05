@@ -35,7 +35,7 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
     }
   }, [])
 
-  const addToast = React.useCallback(({ type, message, duration = 3000,position, toastModal = false,}: Omit<ToastProps, 'id'>) => {
+  const addToast = React.useCallback(({ type, message, duration = 3000,position = 'top-center', toastModal = false,}: Omit<ToastProps, 'id'>) => {
     const id = Math.random()?.toString(36)?.substring(2, 9)
     const newToast = { id, type, message, duration , position}
 
@@ -63,6 +63,7 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
     message: string, 
     duration = 5000,
     toastModal = false,
+    position:ToastPosition
   ) => {
     const id = Math.random().toString(36).substring(2, 9)
     const newToast = {
@@ -70,6 +71,7 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
       type,
       message,
       duration,
+      position,
       createdAt: Date.now(),
     }
 
@@ -127,6 +129,16 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
     </ToastContext.Provider>
   )
 }
+
+
+export const useToastHook=()=> {
+    const context = React.useContext(ToastContext);
+    
+    if (!context) {
+      throw new Error('useToast must be used within a ToastProvider')
+    }
+    return context
+  }
 
 let globalAddToast: ToastContextType['addToast'] | null = null
 let globalAddToaster: ToastContextType['addToaster'] | null = null
