@@ -16,6 +16,7 @@ Use the package manager npm to install reactjs-toaster.
 npm i reactjs-toaster
 ```
 
+### NOTE => Make sure in your Project configure with tailwind css! .
 
 ## Implementation Witn Global Configuration 
 #### Make ToastIntitializer Component (`ToastIntitializer.tsx/jsx `) (`Step => 1`)

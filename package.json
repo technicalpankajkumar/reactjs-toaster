@@ -14,11 +14,17 @@
     "toastify-message",
     "react-toaster",
     "toast-message",
-    "react-toastify"
+    "react-toastify",
+    "toaster",
+    "react",
+    "reactjs",
+    "popup",
+    "alert message"
   ],
   "author": "Technical Pankaj Kumar",
   "license": "ISC",
   "description": "",
+  "repository": "https://github.com/technicalpankajkumar/reactjs-toaster",
   "devDependencies": {
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-typescript": "^12.1.1",
