@@ -47,7 +47,7 @@ export function ToastModal({
     <div className="fixed inset-0 flex items-center justify-center z-50 bg-black/50 animate-in fade-in duration-200" style={style.body}>
       <div
         ref={toastRef}
-        className={`w-80 rounded-lg bg-white p-4 shadow-lg flex flex-col items-center text-center gap-2 animate-in slide-in-from-bottom-4 duration-300`}
+        className={`min-w-96 rounded-lg bg-white p-4 shadow-lg flex flex-col items-center text-center gap-2 animate-in slide-in-from-bottom-4 duration-300`}
         style={style.contentBody}
       >
         <div

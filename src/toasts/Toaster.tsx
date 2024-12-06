@@ -42,7 +42,7 @@ export function Toaster({ type = 'success', message, className, styles }: ToastP
 
   return (
     <div
-      className={`text-wrap text-sm max-w-72 rounded-lg px-3 py-2 shadow-lg animate-enter mb-2 ${backgroundColors[type]}`}
+      className={`text-wrap text-sm max-w-72 rounded-lg px-3 py-2 shadow z-50 animate-enter mb-2 ${backgroundColors[type]}`}
       style={style.body}
     >
       <div className={`flex items-center gap-2`} style={style.contentBody}>
@@ -52,5 +52,3 @@ export function Toaster({ type = 'success', message, className, styles }: ToastP
     </div>
   )
 }
-2
-

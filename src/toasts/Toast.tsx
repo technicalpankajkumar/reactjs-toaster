@@ -32,7 +32,7 @@ export function Toast({
   const progressRef  = useProgressBarHook({duration, type})
 
   return (
-    <div className={`relative w-full max-w-sm overflow-hidden rounded-lg shadow-lg duration-300
+    <div className={`relative w-full max-w-sm overflow-hidden rounded-lg shadow-lg duration-300 z-50
       ${isDarkMode ? "bg-red-800 text-white" : "bg-white text-gray-900"}
     `} style={style.body}>
       <div className="flex items-start gap-3 p-4" style={style.contentBody}>

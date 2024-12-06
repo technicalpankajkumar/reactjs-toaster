@@ -20,7 +20,7 @@ export const useProgressBarHook = ({duration, type, startWidth,endWidth}:Progres
         }
       })
     }
-  }, [duration, type])
+  }, [duration, type , startWidth,endWidth])
 
   return progressRef;
 };
