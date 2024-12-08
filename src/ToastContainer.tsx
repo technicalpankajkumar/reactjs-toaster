@@ -29,7 +29,7 @@ export function ToastContainer({ toasts,toaster, removeToast, isDarkMode, toastM
   return (
     <>
     {
-      ReactDOM.createPortal( <div>
+      ReactDOM.createPortal( <>
         {['top-left', 'top-center', 'top-right', 'middle-left', 'middle-center', 'middle-right', 'bottom-left', 'bottom-center', 'bottom-right'].map((position) => (
           <div key={position} className={`fixed z-50 bg-white ${getPositionClasses(position as ToastPosition)}`}>
             {toaster?.filter((toast) => toast.position === position)
@@ -73,7 +73,7 @@ export function ToastContainer({ toasts,toaster, removeToast, isDarkMode, toastM
           }</div>
         }
   
-      </div>, document.body)
+      </>, document.body)
     }
     </>
     
