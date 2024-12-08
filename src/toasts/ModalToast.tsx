@@ -4,7 +4,6 @@ import { ToastProps } from '../types/toastTypes'
 import useStyleHook from '../hooks/useStyleHook'
 import { useProgressBarHook } from '../hooks/useProgressBarHook'
 
-
 const icons = {
   success: SuccessIcon,
   error: AlertIcon,

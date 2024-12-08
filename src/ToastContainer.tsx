@@ -10,14 +10,13 @@ import * as ReactDOM from 'react-dom'
 interface ToastContainerProps {
   toasts: ToastsProps[]
   removeToast: (id: string) => void
-  isDarkMode: boolean
   toastModal: boolean,
   styles?: styleProps,
   className?: classNameProps
   toaster?: ToastMessage[]
 }
 
-export function ToastContainer({ toasts,toaster, removeToast, isDarkMode, toastModal , styles, className }: ToastContainerProps) {
+export function ToastContainer({ toasts,toaster, removeToast, toastModal , styles, className }: ToastContainerProps) {
   const groupedToasts = toasts?.reduce((acc, toast) => {
     if (!acc[toast?.position]) {
       acc[toast?.position] = []
@@ -49,7 +48,6 @@ export function ToastContainer({ toasts,toaster, removeToast, isDarkMode, toastM
                   message={toast.message}
                   duration={toast.duration}
                   onClose={() => removeToast(toast.id)}
-                  isDarkMode={isDarkMode}
                   styles={styles}
                   className={className}
                 />
@@ -58,7 +56,6 @@ export function ToastContainer({ toasts,toaster, removeToast, isDarkMode, toastM
             :
             <div className="fixed top-4 right-4 z-50 flex flex-col gap-2">
               {toasts.map((toast) => (
-  
               <ToastModal
                 key={toast.id}
                 id={toast.id}

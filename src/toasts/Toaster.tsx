@@ -28,7 +28,7 @@ export function Toaster({ type = 'success', message, className, styles }: ToastP
   useEffect(()=>{
     setClassName(className)
     setStyles(styles)
-  },[className])
+  },[className,styles])
 
   useEffect(() => {
     const timer = setTimeout(() => {

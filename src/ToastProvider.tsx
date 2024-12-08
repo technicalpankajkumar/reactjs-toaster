@@ -5,11 +5,9 @@ import { ToastMessage, ToastPosition, ToastProps, ToastType, ToastsProps, classN
 interface ToastContextType {
   addToast: (toast: Omit<ToastsProps, 'id'>) => void
   removeToast: (id: string) => void
-  isDarkMode?: boolean
-  toggleDarkMode?: () => void
   showToast?: any,
-  setClassName?: (className: classNameProps) => void,
-  setStyles?: (styles: styleProps) => void,
+  setClassName?: any,
+  setStyles?: any,
   addToaster?: (toaster : Omit<ToastMessage, 'id'>) => void
 }
 
@@ -21,7 +19,6 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
   const [toasts, setToasts] = React.useState<ToastsProps[]>([])
   const [toasters, setToasters] = React.useState<ToastMessage[]>([])
   const [toastModal,setToastModal] = React.useState<boolean>(false)
-  const [isDarkMode, setIsDarkMode] = React.useState(false)
   const [className, setClassName] = React.useState<classNameProps>({})
   const [styles, setStyles] = React.useState<styleProps>({})
   const toastTimers = React.useRef(new Map<string, ReturnType<typeof setTimeout>>())
@@ -52,8 +49,8 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
       setToastModal(false)
     }
 
-      const timer = setTimeout(() => removeToast(id), duration)
-      toastTimers.current.set(id, timer)
+    const timer = setTimeout(() => removeToast(id), duration)
+    toastTimers.current.set(id, timer)
 
     return id
   }, [removeToast])
@@ -101,12 +98,15 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
     setTimeout(() => {
       setToasters((prev) => prev.filter((toast) => toast.id !== id))
     }, duration)
-  }, [])
 
-  const toggleDarkMode = React.useCallback(() => {
-    setIsDarkMode(prev => !prev)
-  }, [])
+    const timer = setTimeout(() => removeToast(id), duration)
+    toastTimers.current.set(id, timer)
 
+    return id
+
+  }, [removeToast])
+
+  
   React.useEffect(() => {
     return () => {
       toastTimers.current.forEach(clearTimeout)
@@ -114,14 +114,15 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
     }
   }, [])
 
+
+
   return (
-    <ToastContext.Provider value={{ addToaster, addToast,showToast, removeToast, isDarkMode, toggleDarkMode,setClassName,setStyles }}>
+    <ToastContext.Provider value={{ addToaster, addToast,showToast, removeToast,setClassName,setStyles }}>
       {children}
       <ToastContainer 
         toasts={toasts} 
         toaster={toasters}
         removeToast={removeToast} 
-        isDarkMode={isDarkMode} 
         toastModal={toastModal} 
         className={className}
         styles={styles}
