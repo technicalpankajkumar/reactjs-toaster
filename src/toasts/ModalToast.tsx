@@ -12,8 +12,6 @@ const icons = {
   info: InfoIcon,
   loading: LoaderIcon
 }
-let startWidth="0%";
-let endWidth = "100%"
 
 export function ToastModal({ 
   type, 
@@ -26,6 +24,8 @@ export function ToastModal({
   const toastRef = React.useRef<HTMLDivElement>(null)
   const { backgroundColors, textColors, progressColors, style, setStyles, setClassName } = useStyleHook()
   const Icon = icons[type]
+  let startWidth="0%";
+  let endWidth = "100%"
 
   React.useEffect(()=>{
     setClassName(className)
