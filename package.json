@@ -30,6 +30,7 @@
     "@rollup/plugin-typescript": "^12.1.1",
     "@types/react": "^18.3.14",
     "@types/react-dom": "^19.0.1",
+    "framer-motion": "^11.13.1",
     "rollup": "^4.28.0",
     "tslib": "^2.8.1"
   },

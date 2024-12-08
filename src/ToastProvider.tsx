@@ -32,6 +32,15 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
     }
   }, [])
 
+  const removeToaster = React.useCallback((id: string) => {
+    setToasters(prev => prev.filter(toast => toast.id !== id))
+    const timer = toastTimers.current.get(id)
+    if (timer) {
+      clearTimeout(timer)
+      toastTimers.current.delete(id)
+    }
+  }, [])
+
   const addToast = React.useCallback(({ type, message, duration = 3000,position = 'top-center', toastModal = false,}: Omit<ToastProps, 'id'>) => {
     const id = Math.random()?.toString(36)?.substring(2, 9)
     const newToast = { id, type, message, duration , position}
@@ -93,20 +102,23 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
 
   const addToaster = React.useCallback(({message, type, position , duration = 5000} : Omit<ToastMessage, 'id'>) => {
     const id = Math.random().toString(36).substring(2, 9)
-    setToasters((prev) => [...prev, { id, message, type, position }])
+    let newToast = { id, message, type, position }
 
-    setTimeout(() => {
-      setToasters((prev) => prev.filter((toast) => toast.id !== id))
-    }, duration)
+    setToasters(prev => {
+      const updatedToasts = prev.length >= MAX_TOASTS 
+        ? [...prev.slice(1), newToast]
+        : [...prev, newToast]
+      return updatedToasts
+    })
 
-    const timer = setTimeout(() => removeToast(id), duration)
+    const timer = setTimeout(() => removeToaster(id), duration)
     toastTimers.current.set(id, timer)
 
     return id
 
   }, [removeToast])
 
-  
+
   React.useEffect(() => {
     return () => {
       toastTimers.current.forEach(clearTimeout)

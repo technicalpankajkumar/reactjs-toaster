@@ -21,7 +21,7 @@ const icons = {
   }
 
 export function Toaster({ type = 'success', message, className, styles }: ToastProps) {
-  const [isVisible, setIsVisible] = useState(true);
+  // const [isVisible, setIsVisible] = useState(true);
   const { backgroundColors, textColors, style, setStyles, setClassName} = useStyleHook()
   const Icon = icons[type]
 
@@ -30,15 +30,15 @@ export function Toaster({ type = 'success', message, className, styles }: ToastP
     setStyles(styles)
   },[className,styles])
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsVisible(false)
-    }, 2900) // Slightly less than the removal time to allow for fade out
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     setIsVisible(false)
+  //   }, 2900) // Slightly less than the removal time to allow for fade out
 
-    return () => clearTimeout(timer)
-  }, [])
+  //   return () => clearTimeout(timer)
+  // }, [])
 
-  if (!isVisible) return null
+  // if (!isVisible) return null
 
   return (
     <div
