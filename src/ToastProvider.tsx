@@ -22,8 +22,8 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
   const [toasters, setToasters] = React.useState<ToastMessage[]>([])
   const [toastModal,setToastModal] = React.useState<boolean>(false)
   const [isDarkMode, setIsDarkMode] = React.useState(false)
-  const [className, setClassName] = React.useState<classNameProps>()
-  const [styles, setStyles] = React.useState<styleProps>()
+  const [className, setClassName] = React.useState<classNameProps>({})
+  const [styles, setStyles] = React.useState<styleProps>({})
   const toastTimers = React.useRef(new Map<string, ReturnType<typeof setTimeout>>())
 
   const removeToast = React.useCallback((id: string) => {
@@ -154,7 +154,7 @@ export function toast(type: ToastType, message: string, duration?: number, posit
   if (typeof window !== 'undefined' && globalAddToast) {
     globalAddToast({ type, message, duration, position })
   } else {
-    console.error('Toast function called before initialization or on server-side')
+    console.error('Toast function called before initialization or on server-side or Please configure setAddToast Initializer')
   }
 }
 
@@ -162,6 +162,6 @@ export function toaster(type: ToastType, message: string, duration?: number, pos
   if (typeof window !== 'undefined' && globalAddToaster) {
     globalAddToaster({ type, message, duration, position })
   } else {
-    console.error('Toast function called before initialization or on server-side')
+    console.error('Toast function called before initialization or on server-side or Please configure setAddToaster Initializer')
   }
 }

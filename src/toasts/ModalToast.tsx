@@ -44,7 +44,7 @@ export function ToastModal({
   }
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center z-50 bg-black/50 animate-in fade-in duration-200" style={style.body}>
+    <div className={`fixed inset-0 flex items-center justify-center z-50 bg-black/50 animate-in fade-in duration-200 ${backgroundColors[type]}`} style={style.body}>
       <div
         ref={toastRef}
         className={`min-w-96 rounded-lg bg-white p-4 shadow-lg flex flex-col items-center text-center gap-2 animate-in slide-in-from-bottom-4 duration-300`}
@@ -52,7 +52,7 @@ export function ToastModal({
       >
         <div
           className={`flex h-12 w-12 items-center justify-center rounded-full
-            ${backgroundColors[type]}
+            
           `}
           style={style.iconBody}
         >

@@ -34,10 +34,10 @@ export function Toast({
   return (
     <div className={`relative w-full max-w-sm overflow-hidden rounded-lg shadow-lg duration-300 z-50
       ${isDarkMode ? "bg-red-800 text-white" : "bg-white text-gray-900"}
-    `} style={style.body}>
+    ${backgroundColors[type]}`} style={style.body}>
       <div className="flex items-start gap-3 p-4" style={style.contentBody}>
         <div
-          className={`flex h-8 w-8 items-center justify-center rounded-full ${backgroundColors[type]}`}
+          className={`flex h-8 w-8 items-center justify-center rounded-full`}
           style={style.iconBody}
         >
           <Icon 
